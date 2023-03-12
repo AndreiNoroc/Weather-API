@@ -1,0 +1,26 @@
+db:
+    * definita baza de date
+
+src:
+    - main.py: 
+        * pornim aplicatia
+    - mainmembers.py:
+        * declaram baza de date si clasele necesare pentru interactiunea cu aceasta
+    - *api.py:
+        * implementarea rutelor
+    - Dockerfile:
+        * comenzi necesare pentru asamblarea imaginii serverului din docker(dependinte - requirements.txt)
+    - .dockerignore:
+        * fisierele ignorate in procesul de build
+
+docker-compose.yml:
+    * creeaza containerele si volumele precizate in acesta
+
+startdocker.sh:
+    * inceperea procesului de creeare
+
+cleandocker.sh:
+    * oprirea si stergerea imaginilor, containerelor si volumelor
+
+TestAPI-Tema2_2022-2023:
+    * testele setate cu port-ul corespunzator aplicatiei

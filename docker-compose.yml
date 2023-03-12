@@ -1,0 +1,25 @@
+version: "3"
+services:
+  db:
+    image: mysql:5.7
+    container_name: database
+    ports:
+      - "32121:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./db/appdb.sql:/docker-entrypoint-initdb.d/appdb.sql
+      - mysql_data:/var/lib/mysql
+
+  server:
+    build: ./src
+    container_name: server
+    links:
+      - db
+    environment:
+      MYSQL_PORT: 3306
+    ports:
+      - "8080:8080"
+
+volumes:
+  mysql_data:
